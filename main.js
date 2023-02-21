@@ -2,8 +2,11 @@ const navCorreo = document.querySelector(".navbar-email");
 const menu=document.querySelector(".desktop-menu");
 const mobileMenu=document.querySelector(".mobile-menu");
 const IconMenuLeft=document.querySelector(".menu");
-const carrito=document.querySelector(".navbar-shopping-cart")
-const compras=document.querySelector(".product-detail")
+const carrito=document.querySelector(".navbar-shopping-cart");
+const compras=document.querySelector(".product-detail");
+
+
+
 //creando cards container
 const cardsContainer=document.querySelector(".cards-container")
 
@@ -17,20 +20,25 @@ function toggleMenu(evento) {
     menu.classList.toggle("inactive");
         //al dar click en menu escritorio cerrar compras si esta abierto
     compras.classList.add("inactive");
+    detailProduct.classList.add("inactive");
+
 }
 
 function toggleMenuMobile(evento) {
     mobileMenu.classList.toggle("inactive")
     //al dar click en mobile cerrar compras si esta abierto
     compras.classList.add("inactive");
+    detailProduct.classList.add("inactive");
 
 }
 
 function toggleCarrito(evento) {
     compras.classList.toggle("inactive")
     //al dar click a carrito cerrar o menu escritorio o menu mobile
-    menu.classList.add("inactive")
-    mobileMenu.classList.add("inactive")
+    menu.classList.add("inactive");
+    mobileMenu.classList.add("inactive");
+    detailProduct.classList.add("inactive");
+
 
 }
 
@@ -130,3 +138,28 @@ function asignarproductos(arreglo) {
     }
 }
 asignarproductos(productosLista);
+
+
+
+/*abrir detalle producto en lista*/
+const listProduct=document.querySelector(".product-card");
+listProduct.addEventListener("click",toggleProduc)
+const detailProduct=document.querySelector(".product-detail-secondary")
+
+function toggleProduc(evento) {
+    detailProduct.classList.remove("inactive"); 
+    compras.classList.add("inactive"); 
+    menu.classList.add("inactive");
+
+
+}
+
+/*Cerrar detalle de producto*/
+
+const cerrarDetalle=document.querySelector(".product-detail-close");
+cerrarDetalle.addEventListener("click",funcerrar);
+function funcerrar()
+{
+
+    detailProduct.classList.add("inactive");
+}
