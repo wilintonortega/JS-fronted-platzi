@@ -48,37 +48,37 @@ productosLista.push({
     price:120,
     imagen:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 
-})
+});
 productosLista.push({
     name:"carro",
     price:2000,
     imagen:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 
-})
+});
 productosLista.push({
     name:"moto",
     price:4500,
     imagen:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 
-})
+});
 productosLista.push({
     name:"Bicicleta",
     price:120,
     imagen:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 
-})
+});
 productosLista.push({
     name:"carro",
     price:2000,
     imagen:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 
-})
+});
 productosLista.push({
     name:"moto",
     price:4500,
     imagen:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 
-})
+});
 
 /* <div class="product-card">
 <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
@@ -92,37 +92,39 @@ productosLista.push({
   </figure>
 </div>
 </div> */
-function asignarproductos(arreglo) {
-    for (product of arreglo) {
+
+function renderProducts(arr) {
+    
+    for (product of arr) {
         //creo div y su clase
-        const productCard=document.createElement("div");
-        productCard.classList.add("product-card");
-    
+        const productCard=document.createElement('div');
+        productCard.classList.add('product-card');
+
         //creo imagen
-        const productImg=document.createElement("img");
-        productImg.setAttribute("src",product.imagen)
-    
+        const productImg=document.createElement('img');
+        productImg.setAttribute('src',product.imagen)
         //creando div info
-        const productInfo=document.createElement("div");
-        productInfo.classList.add("product-info");
-    
+        const productInfo=document.createElement('div');
+        productInfo.classList.add('product-info');
         //creando div
-        const productInfoDiv=document.createElement("div");
+        const productInfoDiv=document.createElement('div');
         
-        const productInfoPrecio=document.createElement("p");
-        productInfoPrecio.innerText=product.price;
+        const productPrecio=document.createElement('p');
+        productPrecio.innerText=product.price;
     
-        const productInfoNombre=document.createElement("p");
-        productInfoNombre.innerText=product.name;
+        const productNombre=document.createElement('p');
+        productNombre.innerText=product.name;            
+        const productInfoFigure=document.createElement('figure');
+    
+        const productInfoImagen=document.createElement('img');
+        productInfoImagen.setAttribute('src','./icons/bt_add_to_cart.svg');
+
+        productInfoFigure.appendChild(productInfoImagen);
         
-        productInfoDiv.appendChild(productInfoPrecio);
-        productInfoDiv.appendChild(productInfoNombre);
+        productInfoDiv.appendChild(productPrecio);
+        productInfoDiv.appendChild(productNombre);
     
-    
-        const productInfoFigure=document.createElement("figure");
-    
-        const productInfoImagen=document.createElement("img");
-        productInfoImagen.setAttribute("src","")
+
     
         //creando appenChild para meter etiquetas dentro de sus padres
     
@@ -137,16 +139,16 @@ function asignarproductos(arreglo) {
     
     }
 }
-asignarproductos(productosLista);
+renderProducts(productosLista);
 
 
 
 /*abrir detalle producto en lista*/
-const listProduct=document.querySelector(".product-card");
+const listProduct=document.querySelector(".cards-container");
 listProduct.addEventListener("click",toggleProduc)
-const detailProduct=document.querySelector(".product-detail-secondary")
+const detailProduct=document.querySelector(".product-detail-secondary");
 
-function toggleProduc(evento) {
+function toggleProduc() {
     detailProduct.classList.remove("inactive"); 
     compras.classList.add("inactive"); 
     menu.classList.add("inactive");
